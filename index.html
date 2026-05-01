@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIBrain - Expose the Truth</title>
+    <meta name="description"
+        content="AIBrain — Deep news analysis, AI text humanization, and global rumor tracking in one intelligent platform.">
+    <link rel="stylesheet" href="CSSWEBAIBRAIN.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="particles-bg"></div>
+
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <img src="logo_AIbrain_Team.png" alt="AIBrain Logo" style="height: 50px; width: auto; margin-right: 10px;">
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="analyze.html">Analyze News</a></li>
+            <li><a href="image-forensics.html">Image Forensics</a></li>
+            <li><a href="converter.html">AI ↔ Human Text</a></li>
+            <li><a href="tracker.html">Rumor Tracker</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="btn btn-launch">Launch AI</button>
+    </nav>
+
+    <section class="hero">
+        <h1>Expose the <span class="text-gradient">Truth</span>. Analyze the World.</h1>
+        <p>AIBrain — Deep news analysis, AI text humanization, and global rumor tracking in one intelligent platform.
+        </p>
+        <div class="hero-btns">
+            <a href="analyze.html" class="btn btn-primary"><i class="fas fa-search"></i> Analyze a News Story</a>
+            <a href="converter.html" class="btn btn-outline"><i class="fas fa-exchange-alt"></i> Try Text Converter</a>
+        </div>
+        <div class="scroll-down">
+            <i class="fas fa-mouse"></i>
+            <span>SCROLL DOWN</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <section class="stats-bar">
+        <div class="stat-item">
+            <i class="fas fa-brain stat-icon"></i>
+            <div class="stat-info">
+                <h4 class="counter" data-target="1.2" data-suffix="M+">0</h4>
+                <p>Articles Analyzed</p>
+            </div>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-check-shield stat-icon" style="color: var(--accent);"></i>
+            <div class="stat-info">
+                <h4 class="counter" data-target="98" data-suffix="%">0</h4>
+                <p>Detection Accuracy</p>
+            </div>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-globe stat-icon" style="color: var(--accent2);"></i>
+            <div class="stat-info">
+                <h4 class="counter" data-target="190" data-suffix="+">0</h4>
+                <p>Countries Tracked</p>
+            </div>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-users stat-icon" style="color: var(--gold);"></i>
+            <div class="stat-info">
+                <h4 class="counter" data-target="4" data-suffix="">0</h4>
+                <p>AI Brains</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features container">
+        <h2>Powerful Features</h2>
+        <div class="features-grid">
+            <div class="feature-card" onclick="window.location.href='converter.html'">
+                <i class="fas fa-language feature-icon"></i>
+                <h3>AI ↔ Human Text Converter</h3>
+                <p>Transform robotic AI text into natural human writing and vice versa.</p>
+            </div>
+            <div class="feature-card" onclick="window.location.href='analyze.html'">
+                <i class="fas fa-search feature-icon"></i>
+                <h3>Deep News Analyzer</h3>
+                <p>Paste any news URL or text, get AI percentage, original source, and political bias.</p>
+            </div>
+            <div class="feature-card" onclick="location.href='image-forensics.html'">
+                <div class="feature-icon"><i class="fas fa-image"></i></div>
+                <h3>Image Forensics</h3>
+                <p>Detect AI images, geolocate photos, and verify digital signatures.</p>
+            </div>
+            <div class="feature-card" onclick="location.href='tracker.html'">
+                <div class="feature-icon"><i class="fas fa-globe-americas"></i></div>
+                <h3>Global Heatmap</h3>
+                <p>Visualize the spread of viral rumors across the globe in real-time.</p>
+            </div>
+            <div class="feature-card" onclick="window.location.href='analyze.html'">
+                <i class="fas fa-user-secret feature-icon"></i>
+                <h3>Source & Person Finder</h3>
+                <p>Identify who started the rumor and link to relevant external sources.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container text-center mb-4">
+        <h2>How It Works</h2>
+        <div
+            style="display: flex; justify-content: center; align-items: stretch; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
+            <div class="glass-panel" style="flex: 1; min-width: 200px;">
+                <i class="fas fa-paste fa-2x mb-2 text-gradient"></i>
+                <h4>1. Input</h4>
+                <p class="text-secondary" style="font-size: 0.9rem;">Paste news, text, or keyword to start analysis.</p>
+            </div>
+            <i class="fas fa-chevron-right text-secondary"></i>
+            <div class="glass-panel" style="flex: 1; min-width: 200px;">
+                <i class="fas fa-microchip fa-2x mb-2 text-gradient"></i>
+                <h4>2. AI Analysis</h4>
+                <p class="text-secondary" style="font-size: 0.9rem;">Our AI scans, detects patterns, and cross-checks
+                    millions of sources.</p>
+            </div>
+            <i class="fas fa-chevron-right text-secondary"></i>
+            <div class="glass-panel" style="flex: 1; min-width: 200px;">
+                <i class="fas fa-chart-line fa-2x mb-2 text-gradient"></i>
+                <h4>3. Get Insights</h4>
+                <p class="text-secondary" style="font-size: 0.9rem;">Receive in-depth report, heatmap, sources, and
+                    impact assessment.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container"
+        style="background: linear-gradient(90deg, rgba(108,99,255,0.1), rgba(0,229,255,0.1)); padding: 4rem; border-radius: 16px; text-align: center; border: 1px solid var(--border);">
+        <h2 class="mb-2">Ready to uncover the truth?</h2>
+        <p class="text-secondary mb-4">Join thousands of truth-seekers fighting misinformation.</p>
+        <a href="analyze.html" class="btn btn-primary">Get Started Free</a>
+    </section>
+
+    <footer>
+        <div class="footer-content container" style="padding: 0;">
+            <div class="footer-col">
+                <a href="#" class="nav-brand mb-2">
+                    <img src="logo_AIbrain_Team.png" alt="AIBrain Logo"
+                        style="height: 50px; width: auto; margin-right: 10px;">
+                </a>
+                <p class="text-secondary" style="font-size: 0.9rem; margin-bottom: 1rem;">Expose the truth. Analyze the
+                    world. Humanize AI.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="analyze.html">Analyze News</a></li>
+                    <li><a href="converter.html">AI ↔ Human Text</a></li>
+                    <li><a href="tracker.html">Rumor Tracker</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">API Docs</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AIBrain. Built with passion by AIBrain Team <i class="fas fa-heart text-danger"></i></p>
+        </div>
+    </footer>
+
+    <script src="JSWEBAIBRAIN.js"></script>
+</body>
+
+</html>

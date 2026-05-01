@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - AIBrain</title>
+    <link rel="stylesheet" href="CSSWEBAIBRAIN.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="particles-bg"></div>
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <img src="logo_AIbrain_Team.png" alt="AIBrain Logo" style="height: 50px; width: auto; margin-right: 10px;">
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="analyze.html">Analyze News</a></li>
+            <li><a href="image-forensics.html">Image Forensics</a></li>
+            <li><a href="converter.html">AI ↔ Human Text</a></li>
+            <li><a href="tracker.html">Rumor Tracker</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+        <button class="btn btn-launch">Launch AI</button>
+    </nav>
+
+    <div class="container">
+        <div class="text-center mb-4">
+            <h1>Get in Touch</h1>
+            <p class="text-secondary">Have a question or want to report a rumor? Let us know.</p>
+        </div>
+
+        <div class="contact-layout">
+            <!-- Form -->
+            <div class="glass-panel">
+                <form id="contactForm"
+                    onsubmit="event.preventDefault(); alert('Message sent successfully!'); this.reset();">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Subject</label>
+                        <select class="form-control" required style="appearance: auto; cursor: pointer;">
+                            <option value="">Select a subject...</option>
+                            <option value="report">Report a Rumor</option>
+                            <option value="partnership">Partnership</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="team">Join Team</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-control" placeholder="Write your message here..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;"><i
+                            class="fas fa-paper-plane"></i> Send Message</button>
+                </form>
+            </div>
+
+            <!-- Info & FAQ -->
+            <div>
+                <div class="glass-panel mb-4"
+                    style="background: rgba(108, 99, 255, 0.05); border-color: var(--primary-glow);">
+                    <h3 class="mb-3">Contact Information</h3>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div
+                            style="width: 40px; height: 40px; border-radius: 50%; background: var(--bg-card); display: flex; align-items: center; justify-content: center; color: var(--accent);">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight: 600;">Location</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Amman, Jordan</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div
+                            style="width: 40px; height: 40px; border-radius: 50%; background: var(--bg-card); display: flex; align-items: center; justify-content: center; color: var(--accent);">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight: 600;">General Inquiries</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">hello@aibrain.com</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="mb-3">Frequently Asked Questions</h3>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Is the AI Text Detector 100% accurate?
+                            <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i>
+                        </div>
+                        <div class="accordion-body">
+                            <p style="padding-top: 1rem;">Our AI model has a 98% accuracy rate, but no system is
+                                perfect. We cross-reference multiple patterns and data points to provide the most
+                                reliable score possible.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            What are the free usage limits?
+                            <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i>
+                        </div>
+                        <div class="accordion-body">
+                            <p style="padding-top: 1rem;">Currently, you can analyze up to 50 news articles and convert
+                                up to 5,000 words per day for free. Premium plans will be introduced later.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            How does the Rumor Tracker get data?
+                            <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i>
+                        </div>
+                        <div class="accordion-body">
+                            <p style="padding-top: 1rem;">We use a combination of open-source intelligence (OSINT),
+                                social media APIs, and natural language processing to detect when and where a specific
+                                narrative is spreading.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Is my data private?
+                            <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i>
+                        </div>
+                        <div class="accordion-body">
+                            <p style="padding-top: 1rem;">Yes. We do not store the text you paste into the converter.
+                                Analyzed news URLs are logged to improve our public database, but personal data is never
+                                shared.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            Can I integrate AIBrain via API?
+                            <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i>
+                        </div>
+                        <div class="accordion-body">
+                            <p style="padding-top: 1rem;">We are currently beta-testing our API for enterprise partners.
+                                Please select "Partnership" in the contact form to request early access.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="JSWEBAIBRAIN.js"></script>
+</body>
+
+</html>

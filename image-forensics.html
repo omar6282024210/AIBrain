@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Forensics & OSINT - AIBrain</title>
+    <link rel="stylesheet" href="CSSWEBAIBRAIN.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="particles-bg"></div>
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <img src="logo_AIbrain_Team.png" alt="AIBrain Logo" style="height: 50px; width: auto; margin-right: 10px;">
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="analyze.html">Analyze News</a></li>
+            <li><a href="image-forensics.html" class="active">Image Forensics</a></li>
+            <li><a href="converter.html">AI ↔ Human Text</a></li>
+            <li><a href="tracker.html">Rumor Tracker</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="btn btn-launch">Launch AI</button>
+    </nav>
+
+    <div class="container">
+        <div class="text-center mb-4">
+            <h1>Advanced Image Forensics & OSINT</h1>
+            <p class="text-secondary">Detect AI manipulation, trace digital signatures, and geolocate origins.</p>
+        </div>
+
+        <div class="glass-panel" id="uploadZone" style="border: 2px dashed var(--border); padding: 4rem; text-align: center; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden;">
+            <div id="drop-content">
+                <i class="fas fa-cloud-upload-alt fa-4x mb-3" style="color: var(--accent);"></i>
+                <h3>Upload Image for Forensic Scan</h3>
+                <p class="text-secondary">Drag and drop or click to select image (JPG, PNG, WEBP)</p>
+            </div>
+            <input type="file" id="imageInput" style="display: none;" accept="image/*">
+            
+            <!-- Scanning Overlay (Hidden by default) -->
+            <div id="scanOverlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(6,6,15,0.8); z-index: 10; flex-direction: column; align-items: center; justify-content: center;">
+                <div class="scanner-line"></div>
+                <i class="fas fa-microscope fa-3x mb-3 fa-spin" style="color: var(--accent);"></i>
+                <h4 id="scanStatus">Scanning Pixel Metadata...</h4>
+                <div style="width: 200px; height: 4px; background: var(--border); border-radius: 2px; margin-top: 1rem; overflow: hidden;">
+                    <div id="scanProgress" style="width: 0%; height: 100%; background: var(--accent); transition: width 0.3s;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="imageResults" style="display: none; margin-top: 3rem;">
+            <div class="analyze-grid" style="grid-template-columns: 1fr 1fr;">
+                
+                <!-- Image Preview & AI Check -->
+                <div class="card-item" style="align-items: center;">
+                    <div class="card-title">AI Manipulation Check</div>
+                    <div id="previewContainer" style="width: 100%; max-height: 300px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 1.5rem; position: relative;">
+                        <img id="scannedImage" src="" alt="Scanned Image" style="width: 100%; height: 100%; object-fit: contain;">
+                        <div id="ai-heat-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.4; mix-blend-mode: color-burn;"></div>
+                    </div>
+                    <div style="display: flex; gap: 2rem; width: 100%; justify-content: center;">
+                        <div class="text-center">
+                            <div style="font-size: 0.8rem; color: var(--text-secondary);">AI PROBABILITY</div>
+                            <h2 id="imgAiScore" style="color: var(--danger);">0%</h2>
+                        </div>
+                        <div class="text-center">
+                            <div style="font-size: 0.8rem; color: var(--text-secondary);">AUTHENTICITY</div>
+                            <h2 id="imgRealScore" style="color: var(--success);">0%</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Signature & Metadata -->
+                <div class="card-item">
+                    <div class="card-title">Digital Signature & EXIF</div>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="glass-panel" style="padding: 0.8rem; background: rgba(0,0,0,0.3);">
+                            <div style="font-size: 0.75rem; color: var(--text-secondary);">SIGNATURE STATUS</div>
+                            <div id="sigStatus" style="font-weight: bold; color: var(--success);"><i class="fas fa-check-circle"></i> Valid Cryptographic Signature</div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.9rem;">
+                            <div>
+                                <div style="color: var(--text-secondary);">Camera Body</div>
+                                <div id="exifCamera">Sony A7R IV</div>
+                            </div>
+                            <div>
+                                <div style="color: var(--text-secondary);">Software</div>
+                                <div id="exifSoftware">Original - In-Camera</div>
+                            </div>
+                            <div>
+                                <div style="color: var(--text-secondary);">ISO / Aperture</div>
+                                <div id="exifSettings">ISO 400 | f/2.8</div>
+                            </div>
+                            <div>
+                                <div style="color: var(--text-secondary);">Dimensions</div>
+                                <div id="exifRes">6000 x 4000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image OSINT (Geographic Location) -->
+                <div class="card-item" style="grid-column: span 2;">
+                    <div class="card-title">Image OSINT (Geographic Origin)</div>
+                    <div style="display: flex; gap: 2rem; align-items: center;">
+                        <div id="geoMiniMap" style="width: 250px; height: 150px; background: #111; border-radius: 8px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; position: relative;">
+                             <i class="fas fa-globe-americas fa-3x" style="opacity: 0.2;"></i>
+                             <div id="geoPointer" style="position: absolute; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent);"></div>
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="font-weight: bold; font-size: 1.1rem;" id="geoLocText">Coordinates: 48.8584° N, 2.2945° E</div>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0.5rem 0;">Matched Location: Eiffel Tower, Paris, France (Based on EXIF & Landmark Recognition)</p>
+                            <a href="tracker.html" id="viewGeoOnMap" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem;"><i class="fas fa-map-marked-alt"></i> Plot on Global Heatmap</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reverse Search & Web Presence -->
+                <div class="card-item" style="grid-column: span 2;">
+                    <div class="card-title">Reverse Search & Origin Trace</div>
+                    <div id="webMatchesList" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <!-- Web matches will appear here -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="JSWEBAIBRAIN.js"></script>
+</body>
+</html>

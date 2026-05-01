@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep News Analyzer - AIBrain</title>
+    <link rel="stylesheet" href="CSSWEBAIBRAIN.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="particles-bg"></div>
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <img src="logo_AIbrain_Team.png" alt="AIBrain Logo" style="height: 50px; width: auto; margin-right: 10px;">
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="analyze.html" class="active">Analyze News</a></li>
+            <li><a href="image-forensics.html">Image Forensics</a></li>
+            <li><a href="converter.html">AI ↔ Human Text</a></li>
+            <li><a href="tracker.html">Rumor Tracker</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="btn btn-launch">Launch AI</button>
+    </nav>
+
+    <div class="container text-center">
+        <h1 class="mb-2">Deep News Analyzer</h1>
+        <p class="text-secondary mb-4">Uncover the truth behind every story.</p>
+
+        <div class="input-group mb-4">
+            <input type="text" id="analyzeInput" class="input-bar"
+                placeholder="https://news.yahoo.com/ai-technology-will-change-education-001.html">
+            <button id="analyzeBtn" class="btn btn-primary input-btn">Analyze</button>
+        </div>
+
+        <div id="resultsPanel" style="display: none; text-align: left;">
+            <div class="analyze-grid">
+                <!-- AI Score -->
+                <div class="card-item" style="align-items: center; text-align: center;">
+                    <div class="card-title">AI Content Score</div>
+                    <div class="progress-circle mt-4 mb-4">
+                        <div class="progress-value">78%<span>AI Generated</span></div>
+                    </div>
+                    <p style="color: var(--success); font-weight: 600;">22% Human</p>
+                </div>
+
+                <!-- Original Source -->
+                <div class="card-item" id="osint-source">
+                    <div class="card-title">Digital Footprint & Source</div>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1rem; margin-bottom: 1rem;">
+                        <div
+                            style="background: #410093; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">
+                            <i class="fas fa-server"></i></div>
+                        <div>
+                            <h3 style="margin: 0; font-size: 1.2rem;">Scanning...</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.85rem;">Retrieving IP and Domain
+                                Data...</p>
+                        </div>
+                    </div>
+                    <a href="#" style="color: var(--accent); font-size: 0.9rem;"><i
+                            class="fas fa-external-link-alt"></i> Trace IP Route</a>
+                </div>
+
+                <!-- Rumor Probability -->
+                <div class="card-item" style="border-color: rgba(255, 71, 87, 0.5);">
+                    <div class="card-title">Rumor Probability</div>
+                    <div class="gauge-container mt-4">
+                        <div class="gauge-arc"></div>
+                        <div class="gauge-needle"></div>
+                    </div>
+                    <div class="text-center mt-2">
+                        <h2 style="margin:0;">72%</h2>
+                        <p style="color: var(--danger); font-weight: 600;">Likely Rumor</p>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary);">Confidence: High</p>
+                    </div>
+                </div>
+
+                <!-- Manipulation Check -->
+                <div class="card-item" style="grid-row: span 2;" id="osint-manipulation">
+                    <div class="card-title">Semantic Manipulation Forensics</div>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">Scanning for narrative alteration...</p>
+                    <ul
+                        style="list-style: none; display: flex; flex-direction: column; gap: 1rem; padding-left: 10px; border-left: 2px solid var(--border);">
+                        <!-- Dynamic OSINT sentences go here -->
+                    </ul>
+                </div>
+
+                <!-- Person Who Spread It -->
+                <div class="card-item" id="osint-person">
+                    <div class="card-title">Patient Zero (Origin Node)</div>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1rem;">
+                        <div
+                            style="width: 50px; height: 50px; border-radius: 50%; background: #333; overflow: hidden; border: 2px solid var(--danger);">
+                            <i class="fas fa-user-secret"
+                                style="font-size: 2rem; color: var(--text-secondary); margin: 8px;"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 1rem;">Tracing...</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary);">Cross-referencing databases...
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <span class="badge badge-warning"><i class="fas fa-spinner fa-spin"></i> Analyzing
+                            Network</span>
+                    </div>
+                </div>
+
+                <!-- Societal Impact -->
+                <div class="card-item" id="osint-impact"
+                    style="border-color: rgba(255, 71, 87, 0.3); background: linear-gradient(180deg, var(--bg-card), rgba(255, 71, 87, 0.05));">
+                    <div class="card-title">Societal Impact & Risk Assessment</div>
+                    <div
+                        style="display: flex; align-items: center; gap: 0.5rem; color: var(--danger); margin-bottom: 1rem;">
+                        <i class="fas fa-biohazard fa-2x"></i>
+                        <h3 style="margin: 0;">CALCULATING...</h3>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Simulating
+                        psychological damage index...</p>
+                    <div>
+                        <div
+                            style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.3rem;">
+                            <span>Impact Score</span>
+                            <span style="color: var(--danger); font-weight: bold;">0.0 / 10</span>
+                        </div>
+                        <div style="width: 100%; height: 6px; background: var(--border); border-radius: 3px;">
+                            <div
+                                style="width: 0%; height: 100%; background: var(--danger); border-radius: 3px; transition: width 1s ease;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Forensic Reasoning -->
+                <div class="card-item"
+                    style="grid-column: span 3; background: rgba(0, 229, 255, 0.03); border: 1px dashed var(--accent);">
+                    <div class="card-title"><i class="fas fa-microscope"></i> Deep Forensic Reasoning</div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-top: 1rem;">
+                        <div id="reasoning-syntax">
+                            <h5 style="color: var(--accent); margin-bottom: 0.5rem;">Syntax Analysis</h5>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary);">Calculating linguistic
+                                burstiness and perplexity...</p>
+                        </div>
+                        <div id="reasoning-source">
+                            <h5 style="color: var(--accent); margin-bottom: 0.5rem;">Metadata Integrity</h5>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary);">Analyzing server headers and
+                                SSL chain...</p>
+                        </div>
+                        <div id="reasoning-narrative">
+                            <h5 style="color: var(--accent); margin-bottom: 0.5rem;">Narrative Flow</h5>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary);">Cross-referencing historical
+                                disinfo patterns...</p>
+                        </div>
+                    </div>
+                    <div
+                        style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(0,229,255,0.1); display: flex; justify-content: space-around; text-align: center;">
+                        <div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase;">
+                                Confidence Score</div>
+                            <div id="confidence-val"
+                                style="font-size: 1.2rem; font-weight: bold; color: var(--accent);">0%</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase;">
+                                Source Trust</div>
+                            <div id="trust-val" style="font-size: 1.2rem; font-weight: bold; color: var(--success);">
+                                High</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase;">
+                                Threat Level</div>
+                            <div id="threat-val" style="font-size: 1.2rem; font-weight: bold; color: var(--warning);">
+                                Medium</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- External Sources -->
+                <div class="card-item" id="osint-external" style="grid-column: span 3;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 1rem;">
+                        <h3 style="margin: 0; font-size: 1.2rem;">Cross-Referenced Open Source Databases (OSINT)</h3>
+                        <div style="display: flex; gap: 1rem; font-size: 0.9rem;">
+                            <span class="badge badge-primary">Matches Found</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem;" id="osint-external-list">
+                        <!-- Dynamic OSINT sources go here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="tracker.html" class="btn btn-primary" style="width: 100%; max-width: 400px;"><i
+                        class="fas fa-globe"></i> View on Heatmap</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="JSWEBAIBRAIN.js"></script>
+</body>
+
+</html>

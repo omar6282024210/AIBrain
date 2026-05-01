@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Text Converter - AIBrain</title>
+    <link rel="stylesheet" href="CSSWEBAIBRAIN.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="particles-bg"></div>
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <img src="logo_AIbrain_Team.png" alt="AIBrain Logo" style="height: 50px; width: auto; margin-right: 10px;">
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="analyze.html">Analyze News</a></li>
+            <li><a href="image-forensics.html">Image Forensics</a></li>
+            <li><a href="converter.html" class="active">AI ↔ Human Text</a></li>
+            <li><a href="tracker.html">Rumor Tracker</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="btn btn-launch">Launch AI</button>
+    </nav>
+
+    <div class="container">
+        <div class="text-center mb-4">
+            <h1>AI ↔ Human Text Converter</h1>
+            <p class="text-secondary">Make AI text sound human. Or human text sound AI.</p>
+            <div
+                style="display: inline-flex; background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 4px; margin-top: 1rem;">
+                <button id="modeAiToHuman" class="btn btn-primary"
+                    style="border-radius: 16px; padding: 0.5rem 1.5rem;">AI to Human</button>
+                <button id="modeHumanToAi" class="btn"
+                    style="background: transparent; color: var(--text-secondary); border-radius: 16px; padding: 0.5rem 1.5rem;">Human
+                    to AI</button>
+            </div>
+        </div>
+
+        <div class="converter-container">
+            <!-- Left Panel -->
+            <div class="textarea-wrapper">
+                <div class="textarea-header">
+                    <span id="inputLabel" style="font-weight: 600;">AI Text Input</span>
+                    <button id="useSampleBtn" class="btn btn-outline"
+                        style="padding: 0.3rem 0.8rem; font-size: 0.85rem;">Use Sample</button>
+                </div>
+                <textarea id="aiInput" class="custom-textarea"
+                    placeholder="Paste your AI generated text here..."></textarea>
+                <div id="aiWordCount"
+                    style="padding: 1rem; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 0.85rem;">
+                    0 words
+                </div>
+            </div>
+
+            <!-- Right Panel -->
+            <div class="textarea-wrapper"
+                style="border-color: rgba(0, 229, 255, 0.4); box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.05);">
+                <div class="textarea-header" style="background: rgba(0, 229, 255, 0.1);">
+                    <span id="outputLabel" style="font-weight: 600; color: var(--accent);">Humanized Output</span>
+                    <button class="btn"
+                        style="background: rgba(255,255,255,0.1); padding: 0.3rem 0.8rem; font-size: 0.85rem; border-radius: 6px;"><i
+                            class="far fa-copy"></i> Copy</button>
+                </div>
+                <textarea id="humanOutput" class="custom-textarea" placeholder="Output will appear here..."
+                    readonly></textarea>
+
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-top: 1px solid var(--border); background: var(--bg-deep);">
+                    <div id="humanWordCount" style="color: var(--text-secondary); font-size: 0.85rem;">0 words</div>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <span style="font-size: 0.85rem; font-weight: 600;">Human Score</span>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div
+                                style="width: 60px; height: 30px; position: relative; overflow: hidden; display: flex; justify-content: center; border-radius: 30px 30px 0 0; border: 4px solid var(--border); border-bottom: none;">
+                                <span id="humanScorePercent"
+                                    style="position: absolute; bottom: -5px; font-weight: bold; font-size: 1rem; color: var(--text-primary);">0%</span>
+                            </div>
+                            <span id="humanScoreText"
+                                style="color: var(--text-secondary); font-size: 0.9rem; font-weight: bold;">Ready</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls Panel -->
+            <div class="controls-panel">
+                <div class="glass-panel" style="padding: 1.5rem;">
+                    <h4 class="mb-3">Advanced Settings</h4>
+
+                    <div style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">
+                        <label
+                            style="display: block; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.8rem;">Target
+                            Tone</label>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                            <label
+                                style="background: rgba(10,10,26,0.5); border: 1px solid var(--border); border-radius: 6px; padding: 0.5rem; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.85rem;">
+                                <input type="radio" name="tone" value="professional" checked> Professional
+                            </label>
+                            <label
+                                style="background: rgba(10,10,26,0.5); border: 1px solid var(--border); border-radius: 6px; padding: 0.5rem; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.85rem;">
+                                <input type="radio" name="tone" value="academic"> Academic
+                            </label>
+                            <label
+                                style="background: rgba(10,10,26,0.5); border: 1px solid var(--border); border-radius: 6px; padding: 0.5rem; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.85rem;">
+                                <input type="radio" name="tone" value="journalistic"> Journalistic
+                            </label>
+                            <label
+                                style="background: rgba(10,10,26,0.5); border: 1px solid var(--border); border-radius: 6px; padding: 0.5rem; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.85rem;">
+                                <input type="radio" name="tone" value="casual"> Casual
+                            </label>
+                        </div>
+                    </div>
+                    <div class="slider-group">
+                        <label>Creativity Level</label>
+                        <input type="range" id="creativitySlider" class="custom-slider" min="0" max="100" value="70">
+                        <span style="font-size: 0.85rem; width: 30px; text-align: right;">70%</span>
+                    </div>
+                    <div class="slider-group">
+                        <label>Formality</label>
+                        <input type="range" id="formalitySlider" class="custom-slider" min="0" max="100" value="40"
+                            style="background: linear-gradient(90deg, var(--accent), var(--border));">
+                        <span style="font-size: 0.85rem; width: 30px; text-align: right;">40%</span>
+                    </div>
+                    <div class="slider-group">
+                        <label>Emotion Injection</label>
+                        <input type="range" id="emotionSlider" class="custom-slider" min="0" max="100" value="60"
+                            style="background: linear-gradient(90deg, #E056FD, var(--border));">
+                        <span style="font-size: 0.85rem; width: 30px; text-align: right;">60%</span>
+                    </div>
+                </div>
+
+                <div class="glass-panel"
+                    style="padding: 1.5rem; display: flex; flex-direction: column; justify-content: center;">
+                    <h4 class="mb-2"><i class="fas fa-lightbulb text-gold"></i> Tips</h4>
+                    <ul
+                        style="list-style: none; display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.9rem; color: var(--text-secondary);">
+                        <li><i class="fas fa-check" style="color: var(--success); margin-right: 8px;"></i> Higher
+                            creativity = more natural flow</li>
+                        <li><i class="fas fa-check" style="color: var(--success); margin-right: 8px;"></i> Lower
+                            formality = casual, friendly tone</li>
+                        <li><i class="fas fa-check" style="color: var(--success); margin-right: 8px;"></i> Higher
+                            emotion = adds feelings & personality</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center" style="grid-column: span 2;">
+                <button id="convertBtn" class="btn btn-primary"
+                    style="padding: 1rem 3rem; font-size: 1.1rem; width: 100%; max-width: 400px;">
+                    <i class="fas fa-sparkles"></i> Convert Text
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="JSWEBAIBRAIN.js"></script>
+</body>
+
+</html>
